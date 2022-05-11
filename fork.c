@@ -1,6 +1,6 @@
 #include <sys/types.h>
 #include <unistd.h>
-#includ <stdio.h>
+#include <stdio.h>
 
 /**
  * main - fork example
