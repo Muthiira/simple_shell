@@ -1,18 +1,31 @@
-#include <sys/types.h>
-#include <unistd.h>
 #include <stdio.h>
+#include <unistd.h>
 
 /**
  * main - fork example
  *
- * Return: 0
+ * Return: Always 0.
  */
 int main(void)
 {
-	printf("child1: %u\n", fork());;
-	printf("child2: %u\n", fork());;
+    pid_t my_pid;
+    pid_t child_pid;
 
-	printf("pid: %u, ppid: %u\n", getpid(), getppid());
-
-	return (0);
+    child_pid = fork();
+    if (child_pid == -1)
+    {
+        perror("Error:");
+        return (1);
+    }
+    my_pid = getpid();
+    printf("My pid is %u\n", my_pid);
+    if (child_pid == 0)
+    {
+        printf("(%u) Nooooooooo!\n", my_pid);
+    }
+    else
+    {
+        printf("(%u) %u, I am your father\n", my_pid, child_pid);
+    }
+    return (0);
 }
