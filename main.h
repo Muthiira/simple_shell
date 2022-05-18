@@ -29,7 +29,7 @@ int _setenv(char *var_name, char *var_value);
 char *var_build(char *var_name, char *var_value);
 int _unsetenv(char *var_name);
 
-/*used in cd_handler.c file*/
+/*used in cd.c file*/
 char *_getcwd(void);
 int cd_home(void);
 int cd_prev(void);
