@@ -11,6 +11,7 @@ int get_history(char *input)
 	char *file_name = "/.simple_shell_history";
 	char *directory = get_env("HOME");
 	char *file_path = malloc(_strlen(directory) + _strlen(file_name) + 1);
+
 	if (!file_path)
 	{
 		perror("malloc error->get_history");
@@ -50,6 +51,7 @@ int display_history(void)
 	size_t len;
 	FILE *fp;
 	int counter = 0;
+
 	if (!file_path)
 	{
 		perror("malloc error->display_history");
@@ -68,7 +70,7 @@ int display_history(void)
 		counter++;
 		printf("%d %s", counter, line);
 	}
-	if(line != NULL)
+	if (line != NULL)
 		free(line);
 	fclose(fp);
 	free(file_path);

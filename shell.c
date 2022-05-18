@@ -1,9 +1,12 @@
 #include "main.h"
-
 /**
- *main - Displays a prompt and waits for the user to enter a command
- *Return: 0 on success
+ * main-displays prompt
+ * @argc: number of arguements
+ * @argv: arguements to be printed
+ *
+ * Return: Always 0.
  */
+
 int main(int argc, char *argv[])
 {
 	char **tokens;
@@ -17,9 +20,7 @@ int main(int argc, char *argv[])
 		perror("fstat");
 	status = 1;
 	do {
-/*print prompt if command is not piped*/
 		print_prompt();
-/*read input from stdin*/
 		line = read_line();
 		if (_strcmp(line, "\n") == 0)
 		{
@@ -28,7 +29,6 @@ int main(int argc, char *argv[])
 			continue;
 		}
 		get_history(line);
-/*split the line into tokens*/
 		tokens = _strtotokens(line);
 		if (tokens[0] == NULL)
 		{
@@ -43,10 +43,8 @@ int main(int argc, char *argv[])
 		}
 		else
 		{
-/*execute commands*/
 			status = _execute(tokens, line, argv[0]);
 		}
-/*free memory*/
 		free(line);
 		free(tokens);
 	} while (status == 1);

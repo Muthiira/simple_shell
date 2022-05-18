@@ -65,6 +65,7 @@ int check_file_status(char *filename)
  *_execute - executes a file given as input
  *@tokens:split tokens from stdin input
  *@line:line from stdin to free
+ *@args:arguement
  *Return:-1 (success), -1,otherwise
  */
 int _execute(char **tokens, char *line, char *args)
@@ -86,7 +87,6 @@ int _execute(char **tokens, char *line, char *args)
 		perror("Error:fork->-1");
 		return (EXIT_FAILURE);
 	}
-/*child process*/
 	if (cpid == 0)
 	{
 		if (stat(*tokens, &st) != 0)
